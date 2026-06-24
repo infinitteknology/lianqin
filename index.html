@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>恋勤互动 - 全球跨境广告投放专家</title>
+  <!-- 引入图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- 引入谷歌字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --primary: #165DFF;
+      --secondary: #FF7D00;
+      --dark: #121212;
+      --light: #f5f7fa;
+      --gray: #666;
+    }
+
+    body {
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* 导航栏 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0E42D2;
+    }
+
+    /* 移动端菜单 */
+    .menu-btn {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* 英雄区 */
+    .hero {
+      margin-top: 80px;
+      padding: 80px 5%;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e6f7ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--gray);
+      margin-bottom: 30px;
+      max-width: 550px;
+    }
+
+    .hero-img {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .hero-img img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* 关于我们 */
+    .about {
+      padding: 80px 5%;
+      background: #fff;
+    }
+
+    .about-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .section-desc {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .about-item {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-item h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: var(--dark);
+    }
+
+    .about-item ul {
+      list-style: none;
+      padding: 0;
+      line-height: 2.2;
+    }
+
+    .about-item ul li {
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+
+    .about-item ul li strong {
+      color: var(--dark);
+    }
+
+    /* 平台展示 */
+    .platforms {
+      padding: 60px 5%;
+      text-align: center;
+      background: var(--light);
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .platform-card {
+      padding: 30px 20px;
+      border-radius: 12px;
+      background: white;
+      transition: 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .platform-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .platform-card i {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .fb { color: #1877F2; }
+    .google { color: #4285F4; }
+    .tiktok { color: #000000; }
+    .kwai { color: #FE2C55; }
+
+    /* 服务介绍 */
+    .services {
+      padding: 60px 5%;
+      background: white;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .service-card h3 {
+      margin: 16px 0;
+      color: var(--dark);
+    }
+
+    .service-card p {
+      color: var(--gray);
+    }
+
+    /* 案例展示 */
+    .cases {
+      padding: 60px 5%;
+      background: var(--light);
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .case-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+    }
+
+    .case-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .case-info {
+      padding: 20px;
+    }
+
+    /* 联系我们 */
+    .contact {
+      padding: 60px 5%;
+      background: linear-gradient(135deg, var(--primary), #0E42D2);
+      color: white;
+      text-align: center;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      padding: 14px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    /* 页脚 */
+    .footer {
+      padding: 40px 5%;
+      background: var(--dark);
+      color: white;
+      text-align: center;
+    }
+
+    .footer p {
+      margin-top: 16px;
+      color: #999;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .menu-btn {
+        display: block;
+      }
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+
+    /* 悬浮咨询按钮 */
+    .float-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(255,125,0,0.3);
+      cursor: pointer;
+      z-index: 99;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<div class="navbar">
+  <div class="logo">
+    <i class="fas fa-rocket"></i> 恋勤互动
+  </div>
+  <div class="nav-links">
+    <a href="#home">首页</a>
+    <a href="#about">关于我们</a>
+    <a href="#platforms">投放平台</a>
+    <a href="#services">服务内容</a>
+    <a href="#cases">成功案例</a>
+    <a href="#contact">联系我们</a>
+  </div>
+  <button class="btn btn-primary">立即咨询</button>
+  <div class="menu-btn"><i class="fas fa-bars"></i></div>
+</div>
+
+<!-- 英雄区 -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>全球流量精准投放 <br><span>一站式跨境广告营销</span></h1>
+    <p>专注Facebook、Google、TikTok、Kwai四大海外广告平台，为中国品牌提供专业开户、投放、优化全流程服务，低成本获客，高转化增长。</p>
+    <button class="btn btn-primary">获取专属投放方案</button>
+  </div>
+  <div class="hero-img">
+    <img src="https://img.icons8.com/?size=600&id=qKEoSH1oE62G&format=png&color=165DFF" alt="跨境广告投放">
+  </div>
+</section>
+
+<!-- 关于我们 -->
+<section class="about" id="about">
+  <div class="about-container">
+    <h2 class="section-title">关于我们</h2>
+    <p class="section-desc">
+      Lianqin Interactive (Hong Kong) Group Co., Limited 是专注于全球跨境数字广告投放的专业营销服务机构。
+      我们深耕 Facebook、Google、TikTok、Kwai 等海外主流广告平台，为跨境电商、品牌出海、APP 推广及本地商户提供一站式广告开户、精准投放、素材优化、数据复盘与全案代运营服务，以数据驱动效果，助力中国品牌高效触达全球用户。
+    </p>
+    <div class="about-content">
+      <div class="about-item">
+        <h3>公司信息</h3>
+        <ul>
+          <li><strong>公司名称：</strong>Lianqin Interactive (Hong Kong) Group Co., Limited</li>
+          <li><strong>中文名称：</strong>恋勤互动</li>
+          <li><strong>中文地址：</strong>香港觀塘開源道45號有利中心5樓5031室</li>
+          <li><strong>英文地址：</strong>ROOM 5031, 5/F, YAU LEE CENTRE, NO. 45, HOI YUEN ROAD, KWUN TONG, KOWLOON, HONGKONG</li>
+          <li><strong>联系电话：</strong>00852-39622601</li>
+        </ul>
+      </div>
+      <div class="about-item">
+        <h3>我们的优势</h3>
+        <ul>
+          <li>Facebook / Google / TikTok / Kwai 全平台广告投放服务</li>
+          <li>官方授权开户，账户安全稳定，审核高效</li>
+          <li>资深投放优化师一对一操盘，实时调整策略</li>
+          <li>7×24小时数据监控与优化，持续提升投放ROI</li>
+          <li>定制化跨境营销增长方案，适配不同行业需求</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 投放平台 -->
+<section class="platforms" id="platforms">
+  <h2 class="section-title">核心广告投放平台</h2>
+  <p class="section-desc">覆盖全球主流社媒与搜索平台，精准触达海外目标用户，实现品牌曝光与销量双增长</p>
+  <div class="platform-grid">
+    <div class="platform-card">
+      <i class="fab fa-facebook fb"></i>
+      <h3>Facebook</h3>
+      <p>全球最大社交平台，精准人群定位，覆盖海量活跃用户</p>
+    </div>
+    <div class="platform-card">
+      <i class="fab fa-google google"></i>
+      <h3>Google</h3>
+      <p>全球搜索流量入口，关键词精准获客，抢占意向用户</p>
+    </div>
+    <div class="platform-card">
+      <i class="fab fa-tiktok tiktok"></i>
+      <h3>TikTok</h3>
+      <p>短视频流量风口，爆款内容带货，触达年轻消费群体</p>
+    </div>
+    <div class="platform-card">
+      <i class="fab fa-kwai kwai"></i>
+      <h3>Kwai</h3>
+      <p>拉美/东南亚流量洼地，本地化运营，高效触达下沉市场</p>
+    </div>
+  </div>
+</section>
+
+<!-- 服务内容 -->
+<section class="services" id="services">
+  <h2 class="section-title">我们的专业服务</h2>
+  <p class="section-desc">从开户到运营，全流程一站式广告投放服务，省心高效</p>
+  <div class="service-grid">
+    <div class="service-card">
+      <i class="fas fa-user-plus fa-2x" style="color:var(--primary)"></i>
+      <h3>账户开户</h3>
+      <p>Facebook/Google/TikTok/Kwai官方授权开户，快速审核通道，账户安全无风险</p>
+    </div>
+    <div class="service-card">
+      <i class="fas fa-bullhorn fa-2x" style="color:var(--primary)"></i>
+      <h3>广告投放</h3>
+      <p>资深优化师量身定制投放策略，精准定向人群，多素材组合测试提升曝光</p>
+    </div>
+    <div class
